@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
         //tomi
         //uruma
         //hasama
+        //test
     }
 }
