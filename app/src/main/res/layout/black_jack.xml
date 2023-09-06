@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#005757"
+    tools:context=".BlackJack">
+
+    <TextView
+        android:id="@+id/cpuLabelTextView"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/cpu"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userLabelTextView"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/user"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/standBtn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cpuTotalTextView"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/cpuLabelTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userTotalTextView"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/standBtn"
+        app:layout_constraintStart_toEndOf="@+id/userLabelTextView" />
+
+    <ImageView
+        android:id="@+id/cpuCardImageView1"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/cpuLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/cpuTotalTextView" />
+
+    <ImageView
+        android:id="@+id/userCardImageView1"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/userTotalTextView"
+        app:layout_constraintStart_toEndOf="@+id/userLabelTextView" />
+
+    <ImageView
+        android:id="@+id/userCardImageView2"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/userTotalTextView"
+        app:layout_constraintStart_toStartOf="@+id/userCardImageView1" />
+
+    <ImageView
+        android:id="@+id/userCardImageView3"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/userTotalTextView"
+        app:layout_constraintStart_toStartOf="@+id/userCardImageView2" />
+
+    <ImageView
+        android:id="@+id/userCardImageView4"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/userTotalTextView"
+        app:layout_constraintStart_toStartOf="@+id/userCardImageView3" />
+
+    <ImageView
+        android:id="@+id/userCardImageView5"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/userTotalTextView"
+        app:layout_constraintStart_toStartOf="@+id/userCardImageView4" />
+
+    <ImageView
+        android:id="@+id/cpuCardImageView2"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/cpuCardImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/cpuTotalTextView" />
+
+    <ImageView
+        android:id="@+id/cpuCardImageView3"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/cpuCardImageView2"
+        app:layout_constraintTop_toBottomOf="@+id/cpuTotalTextView" />
+
+    <ImageView
+        android:id="@+id/cpuCardImageView4"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/cpuCardImageView3"
+        app:layout_constraintTop_toBottomOf="@+id/cpuTotalTextView" />
+
+    <ImageView
+        android:id="@+id/cpuCardImageView5"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/cpuCardImageView4"
+        app:layout_constraintTop_toBottomOf="@+id/cpuTotalTextView" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#0000ff"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toTopOf="@+id/userCardImageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpuCardImageView3" />
+
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/hitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/hit"
+        app:layout_constraintBottom_toTopOf="@+id/resetBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/standBtn" />
+
+    <Button
+        android:id="@+id/standBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/stand"
+        app:layout_constraintBottom_toTopOf="@+id/resetBtn"
+        app:layout_constraintEnd_toStartOf="@+id/hitBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

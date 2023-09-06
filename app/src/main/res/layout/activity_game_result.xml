@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/winnerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="36sp"
+        tools:text="Winner: Black" />
+
+    <TextView
+        android:id="@+id/blackCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/winnerTextView"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        tools:text="Black Count: 10" />
+
+    <TextView
+        android:id="@+id/whiteCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/blackCountTextView"
+        android:layout_marginTop="9dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        tools:text="White Count: 8" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/whiteCountTextView"
+        android:layout_alignEnd="@+id/winnerTextView"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="-32dp"
+        android:text="メインメニュー"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+</RelativeLayout>
