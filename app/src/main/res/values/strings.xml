@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">kaihatu</string>
+    <string name="action_sign_in">サインイン</string>
+    <string name="prompt_email2">パスワード</string>
+    <string name="prompt_password">パスワード</string>
+    <string name="prompt_email">メールアドレス</string>
+    <string name="action_sign_in_short">action_sign_in_short</string>
 </resources>
