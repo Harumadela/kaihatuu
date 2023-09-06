@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.graphics.Color
@@ -14,6 +14,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kaihatu.R
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_high_low.*

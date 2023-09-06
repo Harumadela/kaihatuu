@@ -1,4 +1,4 @@
-package com.example.test.model
+package com.example.kaihatu.model
 
 /**
  * 石の状態列挙

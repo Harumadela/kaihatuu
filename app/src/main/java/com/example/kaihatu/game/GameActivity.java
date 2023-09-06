@@ -24,16 +24,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.test.Account;
-import com.example.test.MainActivity;
-import com.example.test.R;
-import com.example.test.ai.OseroAI;
-import com.example.test.game.GamePresenter;
-import com.example.test.game.GameResultActivity;import com.example.test.game.GameView;
-import com.example.test.model.OseroGame;
-import com.example.test.model.Place;
-import com.example.test.model.Stone;
-import com.example.test.model.ai.AINone;
+import com.example.kaihatu.Account;
+import com.example.kaihatu.MainActivity;
+import com.example.kaihatu.R;
+import com.example.kaihatu.ai.OseroAI;
+import com.example.kaihatu.game.GamePresenter;
+import com.example.kaihatu.game.GameResultActivity;import com.example.kaihatu.game.GameView;
+import com.example.kaihatu.model.OseroGame;
+import com.example.kaihatu.model.Place;
+import com.example.kaihatu.model.Stone;
+import com.example.kaihatu.model.ai.AINone;
 
 import java.util.ArrayList;
 import java.util.List;

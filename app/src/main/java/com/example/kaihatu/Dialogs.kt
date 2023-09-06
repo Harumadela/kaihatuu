@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.app.AlertDialog
 import android.app.Dialog

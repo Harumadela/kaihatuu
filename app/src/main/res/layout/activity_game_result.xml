@@ -36,12 +36,12 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="318dp"
+        android:layout_height="61dp"
         android:layout_below="@+id/whiteCountTextView"
-        android:layout_alignEnd="@+id/winnerTextView"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="86dp"
-        android:layout_marginEnd="-32dp"
+        android:layout_marginEnd="77dp"
         android:text="メインメニュー"
         android:textAlignment="center"
         android:textSize="24sp" />

@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.databinding.ActivityMainBinding
+import com.example.kaihatu.R
+import com.example.kaihatu.databinding.ActivityMainBinding
 import io.realm.Realm
 
 class MainActivity : AppCompatActivity() {

@@ -1,9 +1,9 @@
-package com.example.test.model.ai
+package com.example.kaihatu.model.ai
 
-import com.example.test.ai.OseroAI
-import com.example.test.model.OseroGame
-import com.example.test.model.Place
-import com.example.test.model.Stone
+import com.example.kaihatu.ai.OseroAI
+import com.example.kaihatu.model.OseroGame
+import com.example.kaihatu.model.Place
+import com.example.kaihatu.model.Stone
 
 /**
  * AIを使用しない場合

@@ -1,8 +1,8 @@
-package com.example.test.ai
+package com.example.kaihatu.ai
 
-import com.example.test.model.OseroGame
-import com.example.test.model.Place
-import com.example.test.model.Stone
+import com.example.kaihatu.model.OseroGame
+import com.example.kaihatu.model.Place
+import com.example.kaihatu.model.Stone
 import java.io.Serializable
 
 interface OseroAI : Serializable {

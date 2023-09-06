@@ -1,6 +1,5 @@
-package com.example.test
+package com.example.kaihatu
 
-import com.example.test.com.example.test.Card
 import kotlin.math.min
 
 class Player(id:String) {

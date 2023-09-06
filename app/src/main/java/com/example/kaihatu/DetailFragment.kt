@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.test.databinding.FragmentDetailBinding
+import com.example.kaihatu.MainActivity
+import com.example.kaihatu.databinding.FragmentDetailBinding
+import com.example.kaihatu.BlackJack
+import com.example.kaihatu.High_Low
+import com.example.kaihatu.Quiz
+import com.example.kaihatu.osero
 
 
 const val ROW_POSITION = "ROW_POSITION"
 
 class DetailFragment : Fragment() {
-    private var _binding:FragmentDetailBinding? = null
+    private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
 
     private var position: Int = 0

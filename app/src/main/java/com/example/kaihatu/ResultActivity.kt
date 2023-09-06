@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.databinding.ActivityResultBinding
+import com.example.kaihatu.Quiz
+import com.example.kaihatu.R
+import com.example.kaihatu.databinding.ActivityResultBinding
 import io.realm.Realm
 import io.realm.kotlin.where
 

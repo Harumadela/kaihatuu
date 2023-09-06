@@ -1,7 +1,7 @@
-package com.example.test.game
+package com.example.kaihatu.game
 
-import com.example.test.model.Place
-import com.example.test.model.Stone
+import com.example.kaihatu.model.Place
+import com.example.kaihatu.model.Stone
 
 
 interface GameView {

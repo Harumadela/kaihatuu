@@ -1,4 +1,4 @@
-package com.example.test.game
+package com.example.kaihatu.game
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.*
-import com.example.test.model.Stone
+import com.example.kaihatu.MainActivity
+import com.example.kaihatu.R
+import com.example.kaihatu.model.Stone
+import com.example.kaihatu.osero
 import io.realm.Realm
 import io.realm.kotlin.where
 

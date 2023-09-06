@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +7,13 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.ai.OseroAI
-import com.example.test.game.GameActivity
-import com.example.test.model.ai.AINone
-import com.example.test.model.ai.AIStrong
-import com.example.test.model.ai.AIWeak
+import com.example.kaihatu.MainActivity
+import com.example.kaihatu.R
+import com.example.kaihatu.ai.OseroAI
+import com.example.kaihatu.game.GameActivity
+import com.example.kaihatu.model.ai.AINone
+import com.example.kaihatu.model.ai.AIStrong
+import com.example.kaihatu.model.ai.AIWeak
 
 
 class osero : AppCompatActivity() {

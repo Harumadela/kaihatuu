@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.test.databinding.FragmentListBinding
+import com.example.kaihatu.R
+import com.example.kaihatu.databinding.FragmentListBinding
+import com.example.kaihatu.DetailFragment
+import com.example.kaihatu.SightAdapter
 
 
 class ListFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.graphics.Color
@@ -15,7 +15,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.databinding.BlackJackBinding
+import com.example.kaihatu.databinding.BlackJackBinding
+import com.example.kaihatu.Player
 import io.realm.Realm
 import io.realm.kotlin.where
 

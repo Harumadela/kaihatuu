@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.res.Resources
 import kotlinx.serialization.Serializable

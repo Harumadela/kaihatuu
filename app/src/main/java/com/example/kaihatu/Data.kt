@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

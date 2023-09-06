@@ -1,13 +1,14 @@
-package com.example.test.game
+package com.example.kaihatu.game
 
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.VisibleForTesting
-import com.example.test.ai.OseroAI
-import com.example.test.model.OseroGame
-import com.example.test.model.Place
-import com.example.test.model.Stone
-import com.example.test.model.ai.AINone
+import com.example.kaihatu.ai.OseroAI
+import com.example.kaihatu.model.OseroGame
+import com.example.kaihatu.model.Place
+import com.example.kaihatu.model.Stone
+import com.example.kaihatu.model.ai.AINone
+
 
 
 class GamePresenter {

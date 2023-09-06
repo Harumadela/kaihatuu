@@ -1,6 +1,5 @@
-package com.example.test
+package com.example.kaihatu
 
-import com.example.test.com.example.test.Card
 
 class Deck {
     private val cards = mutableListOf<Card>() //山札

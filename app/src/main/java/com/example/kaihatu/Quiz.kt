@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,9 @@ import android.widget.Button
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test.databinding.QuizBinding
+import com.example.kaihatu.R
+import com.example.kaihatu.databinding.QuizBinding
+import com.example.kaihatu.ResultActivity
 
 class Quiz : AppCompatActivity() {
 

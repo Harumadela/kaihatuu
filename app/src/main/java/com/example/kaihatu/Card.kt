@@ -1,4 +1,4 @@
-package com.example.test.com.example.test
+package com.example.kaihatu
 
 class Card(num:Int, mark:Char) {
     private val num = num //カード番号
