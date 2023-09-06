@@ -1,8 +1,53 @@
 <resources>
-    <string name="app_name">kaihatu</string>
-    <string name="action_sign_in">サインイン</string>
-    <string name="prompt_email2">パスワード</string>
-    <string name="prompt_password">パスワード</string>
-    <string name="prompt_email">メールアドレス</string>
-    <string name="action_sign_in_short">action_sign_in_short</string>
+    <string name="app_name">test</string>
+    <string name="home">ホーム画面</string>
+    <string name="seni">遷移</string>
+    <string name="idousaki">移動先画面</string>
+    <string name="back">戻る</string>
+    <string name="cpu">CPU</string>
+    <string name="user">あなた</string>
+    <string name="stand">スタンド</string>
+    <string name="hit">ヒット</string>
+    <string name="reset">リセット</string>
+    <string name="win">あなたの勝ち</string>
+    <string name="lose">あなたの負け</string>
+    <string name="drow">引き分け</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Play">Play</string>
+    <string name="register">登録</string>
+    <string name="Note">*ユーザー登録をしないとデータは保存されません</string>
+    <string name="hint">ユーザー登録してね！</string>
+    <string name="account">戦績</string>
+    <string name="delete">リセット</string>
+    <string name="Note2">*既にアカウントが存在する場合データがリセットされます</string>
+    <!-- クイズ画面 -->
+    <string name="question_label">問題文</string>
+    <string name="count_label">Q%d</string>
+    <string name="btn_answer">選択肢</string>
+
+    <!-- 結果画面 -->
+    <string name="result_title">結果</string>
+    <string name="result_score">%d / 10</string>
+    <string name="btn_try_again">もう一度</string>
+
+    <string name="hit_text">あたり  </string>
+    <string name="lose_text">はずれ  </string>
+    <string name="high_text">High</string>
+    <string name="next_text">カードを引く</string>
+    <string name="low_text">low</string>
+    <string name="player">自分</string>
+    <string name="cpu_high">相手</string>
+
+
+    <string name="textGameWinner">黒%1$d、白%2$dで%3$sの勝ちです。</string>
+    <string name="textTopModeManualButton">手動モード</string>
+    <string name="textTopModeAIWeakButton">対AI:よわい</string>
+    <string name="textTopModeAIStrongButton">対AI:つよい</string>
+    <string name="textGameCurrentPlayer">%1$sのターンです</string>
+    <string name="text_winner_white">Winner: 白</string>
+    <string name="text_winner_black">Winner: 黒</string>
+    <string name="black_text_count">黒: %1$d</string>
+    <string name="white_text_count">白: %1$d</string>
+
 </resources>
