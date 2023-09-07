@@ -18,5 +18,10 @@
         "name":  "オセロ",
         "imageName": "osero",
         "detail": "シンプルなオセロ！プレイヤーは黒の駒で、相手は白の駒を操作する。"
+    },
+    {
+        "name":  "シューティング",
+        "imageName": "shooting",
+        "detail": "シューティングゲーム"
     }
 ]

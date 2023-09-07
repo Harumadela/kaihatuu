@@ -88,6 +88,10 @@ class DetailFragment : Fragment() {
                         var intent = Intent(context, osero::class.java)
                         startActivity(intent)
                     }
+                    else if(position == 4){
+                        var intent = Intent(context, Shooting::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
         }

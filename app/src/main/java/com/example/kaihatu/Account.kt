@@ -39,6 +39,7 @@ class Account : AppCompatActivity() {
         var match_high_low = realm.where<Data>().max("match_high_low")
         var win_osero_black = realm.where<Data>().max("win_osero_black")
         var win_osero_white = realm.where<Data>().max("win_osero_white")
+        var shooting_point = realm.where<Data>().max("shooting_point")
 
 
 
@@ -46,6 +47,7 @@ class Account : AppCompatActivity() {
         binding.result2.text = "正解率" + accuracy.toString() + "%"
         binding.result3.text = match_high_low.toString() + "戦" + win_high_low.toString() + "勝"
         binding.result4.text = "黒：" + win_osero_black.toString() + "勝　" + "白：" + win_osero_white.toString() + "勝"
+        binding.result5.text = "  最高 " + shooting_point.toString() + "Pt"
 
         if(binding.result1.text == "null戦" + "null勝"){
             register()
@@ -59,6 +61,9 @@ class Account : AppCompatActivity() {
         }
         if(binding.result4.text == "黒：null勝　" + "白：null勝"){
             binding.result4.text = "黒：0勝　" + "白：0勝"
+        }
+        if(binding.result4.text == "nullPt"){
+            binding.result4.text = "  最高 0Pt"
         }
 //        binding.register.setOnClickListener{register()}
         binding.delete.setOnClickListener{deleteData()}
@@ -106,6 +111,7 @@ class Account : AppCompatActivity() {
                         realmObject1.match_high_low = 0
                         realmObject1.win_osero_black = 0
                         realmObject1.win_osero_white = 0
+                        realmObject1.shooting_point = 0
 
                         Log.e("RealmInsert", "登録しました:${realm.where<Data>().findAll()}")
                     }
@@ -131,6 +137,7 @@ class Account : AppCompatActivity() {
                     binding.result2.text = "正解率0%"
                     binding.result3.text = "0戦" + "0勝"
                     binding.result4.text = "黒：0勝　" + "白：0勝"
+                    binding.result5.text = "  最高 0Pt"
                 }
                 .setNegativeButton("Cancel") { dialog, which ->
                     // Cancelの時は何もしない
