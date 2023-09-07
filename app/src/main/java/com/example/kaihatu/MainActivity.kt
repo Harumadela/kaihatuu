@@ -2,13 +2,16 @@ package com.example.kaihatu
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kaihatu.R
 import com.example.kaihatu.databinding.ActivityMainBinding
 import io.realm.Realm
+import io.realm.kotlin.createObject
+import io.realm.kotlin.where
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         realm = Realm.getDefaultInstance()
+
+        register()
 
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
@@ -45,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
-            R.id.action_user ->{
+            R.id.action_user -> {
                 var intent = Intent(this, Account::class.java)
                 startActivity(intent)
             }
@@ -53,6 +58,31 @@ class MainActivity : AppCompatActivity() {
 
 //        Toast.makeText(this, "「${item.title}」が押されました。", Toast.LENGTH_SHORT).show()
         return true
+    }
+
+    private fun register(){
+        val data = realm.where<Data>()
+            .equalTo("id", 1.toInt())
+            .findFirst()
+        if(data == null){
+            realm.executeTransaction {
+                val target = realm.where<Data>().findAll()
+                target.deleteAllFromRealm()
+                val nextId1 = 1
+                val realmObject1 = realm.createObject<Data>(nextId1)
+                realmObject1.win_black = 0
+                realmObject1.match_black = 0
+                realmObject1.accuracy = 0
+                realmObject1.win_high_low = 0
+                realmObject1.match_high_low = 0
+                realmObject1.win_osero_black = 0
+                realmObject1.win_osero_white = 0
+                realmObject1.shooting_point = 0
+
+                Log.e("RealmInsert", "登録しました:${realm.where<Data>().findAll()}")
+            }
+        }
+
     }
 
 

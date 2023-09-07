@@ -50,7 +50,7 @@ class Account : AppCompatActivity() {
         binding.result5.text = "  最高 " + shooting_point.toString() + "Pt"
 
         if(binding.result1.text == "null戦" + "null勝"){
-            register()
+//            register()
             binding.result1.text = "0戦" + "0勝"
         }
         if(binding.result2.text == "正解率null%"){
