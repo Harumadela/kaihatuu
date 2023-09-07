@@ -1,6 +1,5 @@
 package com.example.kaihatu.model
 
-import com.example.kaihatu.model.Stone
 
 /**
  * マスの座標と状態を保持する

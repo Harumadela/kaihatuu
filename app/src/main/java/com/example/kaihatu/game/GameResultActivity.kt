@@ -13,6 +13,7 @@ import com.example.kaihatu.MainActivity
 import com.example.kaihatu.R
 import com.example.kaihatu.model.Stone
 import com.example.kaihatu.osero
+import com.example.kaihatu.*
 import io.realm.Realm
 import io.realm.kotlin.where
 

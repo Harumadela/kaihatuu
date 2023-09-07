@@ -1,8 +1,5 @@
 package com.example.kaihatu.model
 
-import com.example.kaihatu.model.Place
-import com.example.kaihatu.model.Stone
-
 
 class OseroGame() {
 

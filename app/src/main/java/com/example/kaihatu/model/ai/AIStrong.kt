@@ -1,9 +1,9 @@
 package com.example.kaihatu.model.ai
 
+import com.example.kaihatu.ai.OseroAI
 import com.example.kaihatu.model.OseroGame
 import com.example.kaihatu.model.Place
 import com.example.kaihatu.model.Stone
-import com.example.test.ai.OseroAI
 
 class AIStrong : OseroAI {
 
