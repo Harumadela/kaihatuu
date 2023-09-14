@@ -42,10 +42,11 @@ class ResultActivity : AppCompatActivity() {
                 .equalTo("id",1.toInt())
                 .findFirst()
         realm.executeTransaction {
-            var accuracy = realm.where<Data>().max("accuracy")
-            accuracy = score *10
-            data?.accuracy = accuracy?.toInt()
-            Log.e("RealmUpdate", "スコア:${accuracy}")
+            var total_answer = realm.where<Data>().max("total_answer")
+            var total_current = realm.where<Data>().max("total_current")
+            data?.total_answer = (total_answer?.toLong() ?: 0)?.toInt() + 10
+            data?.total_current = (total_current?.toLong() ?: 0)?.toInt() + score
+            Log.e("RealmUpdate", "スコア:${score}")
         }
 
         Log.e("RealmUpdate", "更新しました:${realm.where<Data>().equalTo("id", 1.toInt()).findFirst()}")

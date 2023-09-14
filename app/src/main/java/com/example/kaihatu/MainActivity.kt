@@ -72,7 +72,8 @@ class MainActivity : AppCompatActivity() {
                 val realmObject1 = realm.createObject<Data>(nextId1)
                 realmObject1.win_black = 0
                 realmObject1.match_black = 0
-                realmObject1.accuracy = 0
+                realmObject1.total_answer = 0
+                realmObject1.total_current = 0
                 realmObject1.win_high_low = 0
                 realmObject1.match_high_low = 0
                 realmObject1.win_osero_black = 0
@@ -82,7 +83,6 @@ class MainActivity : AppCompatActivity() {
                 Log.e("RealmInsert", "登録しました:${realm.where<Data>().findAll()}")
             }
         }
-
     }
 
 

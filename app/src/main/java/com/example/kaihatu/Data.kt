@@ -9,7 +9,8 @@ open class Data: RealmObject() {
     var name: String? = null
     var win_black: Int = 0
     var match_black: Int = 0
-    var accuracy: Int = 0
+    var total_answer: Int = 0
+    var total_current: Int = 0
     var win_high_low: Int = 0
     var match_high_low: Int = 0
     var win_osero_black: Int = 0
