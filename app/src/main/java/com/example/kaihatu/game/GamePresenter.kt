@@ -17,6 +17,7 @@ class GamePresenter {
     private lateinit var ai: OseroAI
     private var view: GameView? = null
     val boardSize = game.BOARD_SIZE
+    private var isPassTurn = false
 
 
     /** 現在どちらのターンか **/
@@ -50,13 +51,27 @@ class GamePresenter {
         // ターン切替
         changePlayer()
         view.markCanPutPlaces(game.getAllCanPutPlaces(currentPlayer))
+
         // パス
-        if (!game.canNext(currentPlayer)) {
-            view.clearAllMarkPlaces()
-            changePlayer()
+        if (game.getAllCanPutPlaces(currentPlayer).isEmpty()) {
+            if (isPassTurn) {
+                // 連続してパスが続いた場合、ゲーム終了とする
+                view.clearAllMarkPlaces()
+                //view.showPassMessage()
+                view.finishGame()
+            } else {
+                // パス
+                isPassTurn = true
+                view.clearAllMarkPlaces()
+                //view.showPassMessage()
+                changePlayer()
+            }
+        } else {
+            // パスではない場合、置けるマスを表示
+            isPassTurn = false
             view.markCanPutPlaces(game.getAllCanPutPlaces(currentPlayer))
-            return
         }
+
         // AI
         if (ai !is AINone && currentPlayer == Stone.WHITE) {
             val choseByAI = ai.computeNext(game, currentPlayer)
@@ -66,10 +81,27 @@ class GamePresenter {
         }
     }
 
+    fun onClickPass() {
+        val view = view ?: return
+        view.clearAllMarkPlaces()
+        //view.showPassMessage()
+        changePlayer()
+
+        // AI
+        if (ai !is AINone && currentPlayer == Stone.WHITE) {
+            val choseByAI = ai.computeNext(game, currentPlayer)
+            onClickPlace(choseByAI.x, choseByAI.y)
+        }
+    }
+
 
     /** ターンを変更する */
     @VisibleForTesting
     fun changePlayer() {
+        if (isPassTurn) {
+            isPassTurn = false
+            return
+        }
         currentPlayer = currentPlayer.other()
         view?.setCurrentPlayerText(currentPlayer)
     }

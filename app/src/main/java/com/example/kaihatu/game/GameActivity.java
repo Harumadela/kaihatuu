@@ -13,6 +13,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -86,6 +87,9 @@ public class GameActivity extends AppCompatActivity implements GameView {
             ai = new AINone();
         }
         presenter.onCreate(this, ai);
+
+        Button passButton = findViewById(R.id.passButton);
+        passButton.setOnClickListener(v -> presenter.onClickPass());
     }
 
     @Override
