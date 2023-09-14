@@ -135,11 +135,22 @@ public class GameActivity extends AppCompatActivity implements GameView {
     @Override
     public void showWinner(Stone player, int blackCount, int whiteCount) {
         Intent intent = new Intent(this, GameResultActivity.class);
-        intent.putExtra(GameResultActivity.EXTRA_PLAYER, player);
-        intent.putExtra(GameResultActivity.EXTRA_BLACK_COUNT, blackCount);
-        intent.putExtra(GameResultActivity.EXTRA_WHITE_COUNT, whiteCount);
+        if (blackCount > whiteCount) {
+            intent.putExtra(GameResultActivity.EXTRA_PLAYER, Stone.BLACK);
+            intent.putExtra(GameResultActivity.EXTRA_BLACK_COUNT, blackCount);
+            intent.putExtra(GameResultActivity.EXTRA_WHITE_COUNT, whiteCount);
+        } else if (whiteCount > blackCount) {
+            intent.putExtra(GameResultActivity.EXTRA_PLAYER, Stone.WHITE);
+            intent.putExtra(GameResultActivity.EXTRA_BLACK_COUNT, blackCount);
+            intent.putExtra(GameResultActivity.EXTRA_WHITE_COUNT, whiteCount);
+        } else {
+            intent.putExtra(GameResultActivity.EXTRA_PLAYER, Stone.NONE); // 引き分けの場合、Stone.NONEをセット
+            intent.putExtra(GameResultActivity.EXTRA_BLACK_COUNT, blackCount);
+            intent.putExtra(GameResultActivity.EXTRA_WHITE_COUNT, whiteCount);
+        }
         startActivity(intent);
     }
+
 
     @Override
     public void finishGame() {

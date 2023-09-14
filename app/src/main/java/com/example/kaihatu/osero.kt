@@ -29,10 +29,8 @@ class osero : AppCompatActivity() {
             actionBar.setTitle("オセロ")
         }
 
-        val topModeManualButton = findViewById<Button>(R.id.topModeManualButton)
         val topModeAIWeakButton = findViewById<Button>(R.id.topModeAIWeakButton)
         val topModeAIStrongButton = findViewById<Button>(R.id.topModeAIStrongButton)
-        topModeManualButton.setOnClickListener { startGameActivity(AINone()) }
         topModeAIWeakButton.setOnClickListener { startGameActivity(AIWeak()) }
         topModeAIStrongButton.setOnClickListener { startGameActivity(AIStrong()) }
     }

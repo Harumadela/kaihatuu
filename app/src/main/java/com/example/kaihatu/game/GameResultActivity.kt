@@ -47,6 +47,7 @@ class GameResultActivity : AppCompatActivity() {
         val winnerText = when (player) {
             Stone.BLACK -> getString(R.string.text_winner_black)
             Stone.WHITE -> getString(R.string.text_winner_white)
+            Stone.NONE -> getString(R.string.text_draw)
             else -> throw IllegalArgumentException()
         }
 
