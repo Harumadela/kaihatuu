@@ -47,6 +47,7 @@ class GameResultActivity : AppCompatActivity() {
         val winnerText = when (player) {
             Stone.BLACK -> getString(R.string.text_winner_black)
             Stone.WHITE -> getString(R.string.text_winner_white)
+            Stone.NONE -> getString(R.string.text_draw)
             else -> throw IllegalArgumentException()
         }
 
@@ -75,9 +76,9 @@ class GameResultActivity : AppCompatActivity() {
                 .equalTo("id",1.toInt())
                 .findFirst()
         realm.executeTransaction {
-            var win_osero_white = realm.where<Data>().max("win_osero_white")
-            win_osero_white = (win_osero_white?.toLong() ?: 0) + 1
-            data?.win_osero_white = win_osero_white?.toInt()
+            var match_osero = realm.where<Data>().max("match_osero")
+            match_osero = (match_osero?.toLong() ?: 0) + 1
+            data?.match_osero = match_osero?.toInt()
         }
 
         Log.e("RealmUpdate", "更新しました:${realm.where<Data>().equalTo("id", 1.toInt()).findFirst()}")
@@ -88,9 +89,12 @@ class GameResultActivity : AppCompatActivity() {
                 .equalTo("id",1.toInt())
                 .findFirst()
         realm.executeTransaction {
-            var win_osero_black= realm.where<Data>().max("win_osero_black")
-            win_osero_black = (win_osero_black?.toLong() ?: 0) + 1
-            data?.win_osero_black = win_osero_black?.toInt()
+            var win_osero= realm.where<Data>().max("win_osero")
+            win_osero = (win_osero?.toLong() ?: 0) + 1
+            data?.win_osero = win_osero?.toInt()
+            var match_osero = realm.where<Data>().max("match_osero")
+            match_osero = (match_osero?.toLong() ?: 0) + 1
+            data?.match_osero = match_osero?.toInt()
 
         }
 

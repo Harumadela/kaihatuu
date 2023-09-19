@@ -40,29 +40,46 @@ class Account : AppCompatActivity() {
         var total_current = realm.where<Data>().max("total_current")
         var win_high_low = realm.where<Data>().max("win_high_low")
         var match_high_low = realm.where<Data>().max("match_high_low")
-        var win_osero_black = realm.where<Data>().max("win_osero_black")
-        var win_osero_white = realm.where<Data>().max("win_osero_white")
+        var win_osero = realm.where<Data>().max("win_osero")
+        var match_osero = realm.where<Data>().max("match_osero")
         var shooting_point = realm.where<Data>().max("shooting_point")
 
-        var accuracy =  (total_current?.toLong() ?: 0)?.toDouble() / (total_answer?.toLong() ?: 0)?.toDouble() * 100
-        if(accuracy.isNaN()){
-            accuracy = 0.0
+        var black_rate = (win_black?.toLong() ?: 0)?.toDouble() / (match_black?.toLong() ?: 0)?.toDouble() * 100
+        var quiz_accuracy =  (total_current?.toLong() ?: 0)?.toDouble() / (total_answer?.toLong() ?: 0)?.toDouble() * 100
+        var high_rate = (win_high_low?.toLong() ?: 0)?.toDouble() / (match_high_low?.toLong() ?: 0)?.toDouble() * 100
+        var osero_rate = (win_osero?.toLong() ?: 0)?.toDouble() / (match_osero?.toLong() ?: 0)?.toDouble() * 100
+
+        black_rate = Math.round(black_rate * 10.0) / 10.0
+        quiz_accuracy= Math.round(quiz_accuracy * 10.0) / 10.0
+        high_rate = Math.round(high_rate * 10.0) / 10.0
+
+        if(black_rate.isNaN()){
+            black_rate = 0.0
+        }
+        if(quiz_accuracy.isNaN()){
+            quiz_accuracy = 0.0
+        }
+        if(high_rate.isNaN()){
+            high_rate = 0.0
+        }
+        if(osero_rate.isNaN()){
+            osero_rate = 0.0
         }
 
 
         val list: MutableList<MyItem> = mutableListOf()
+
         for (i in 0..5) {
             when(i){
-                0 -> list.add(MyItem(i, "BlackJack", "$match_black 戦　 $win_black 勝"))
-                1 -> list.add(
-                    MyItem(
-                        i, "クイズ", "$total_answer 問中： $total_current 正解" +
-                                "　　正解率：　$accuracy %"
-                    )
-                )
-                2 -> list.add(MyItem(i, "High＆Low", "$match_high_low 戦　 $win_high_low 勝"))
-                3 -> list.add(MyItem(i, "オセロ", "黒： $win_osero_black 勝　白： $win_osero_white 勝"))
-                4 -> list.add(MyItem(i, "シューティング", "最高　$shooting_point pt"))
+                0 -> list.add(MyItem(i, "BlackJack", " $match_black 戦　 $win_black 勝" +
+                        "　　　　　　勝率： $black_rate %"))
+                1 -> list.add(MyItem(i, "クイズ", "　$total_answer 問中： $total_current 正解" +
+                                "　　　　　　正解率： $quiz_accuracy %"))
+                2 -> list.add(MyItem(i, "High＆Low", "　$match_high_low 戦　 $win_high_low 勝" +
+                        "　　　　　　勝率： $high_rate %"))
+                3 -> list.add(MyItem(i, "オセロ", "　$match_osero 戦　 $win_osero 勝" +
+                        "　　　　　　勝率： $osero_rate %"))
+                4 -> list.add(MyItem(i, " 　シューティング", "　　最高　$shooting_point pt"))
             }
 
         }
@@ -136,8 +153,8 @@ class Account : AppCompatActivity() {
             realmObject1.total_current = 0
             realmObject1.win_high_low = 0
             realmObject1.match_high_low = 0
-            realmObject1.win_osero_black = 0
-            realmObject1.win_osero_white = 0
+            realmObject1.win_osero = 0
+            realmObject1.match_osero = 0
             realmObject1.shooting_point = 0
 
             Log.e("RealmInsert", "登録しました:${realm.where<Data>().findAll()}")

@@ -13,7 +13,7 @@ open class Data: RealmObject() {
     var total_current: Int = 0
     var win_high_low: Int = 0
     var match_high_low: Int = 0
-    var win_osero_black: Int = 0
-    var win_osero_white: Int = 0
+    var win_osero: Int = 0
+    var match_osero: Int = 0
     var shooting_point: Int = 0
 }

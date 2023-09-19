@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity() {
                 realmObject1.total_current = 0
                 realmObject1.win_high_low = 0
                 realmObject1.match_high_low = 0
-                realmObject1.win_osero_black = 0
-                realmObject1.win_osero_white = 0
+                realmObject1.win_osero = 0
+                realmObject1.match_osero = 0
                 realmObject1.shooting_point = 0
 
                 Log.e("RealmInsert", "登録しました:${realm.where<Data>().findAll()}")
