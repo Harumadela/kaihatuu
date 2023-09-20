@@ -23,6 +23,7 @@ class GamePresenter {
     /** 現在どちらのターンか **/
     var currentPlayer = Stone.BLACK
 
+
     fun onCreate(view: GameView, ai: OseroAI = AINone()) {
         this.view = view
         this.ai = ai
@@ -94,7 +95,6 @@ class GamePresenter {
         }
     }
 
-
     /** ターンを変更する */
     @VisibleForTesting
     fun changePlayer() {
@@ -113,6 +113,4 @@ class GamePresenter {
         view?.putStone(place)
 
     }
-
-
 }
