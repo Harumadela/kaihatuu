@@ -17,8 +17,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class SpaceShooter extends View {
-    Context context;
+    static Context context;
     Bitmap background, lifeImage;
     Handler handler;
     long UPDATE_MILLIS = 30;
@@ -29,12 +30,12 @@ public class SpaceShooter extends View {
     int TEXT_SIZE = 80;
     boolean paused = false;
     OurSpaceship ourSpaceship;
-    EnemySpaceship enemySpaceship;
+    static EnemySpaceship enemySpaceship;
     Random random;
-    ArrayList<Shot> enemyShots, ourShots;
+    static ArrayList<Shot> enemyShots, ourShots;
     Explosion explosion;
     ArrayList<Explosion> explosions;
-    boolean enemyShotAction = false;
+    static boolean enemyShotAction = false;
     final Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -89,28 +90,45 @@ public class SpaceShooter extends View {
         if(enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() >= screenWidth){
             enemySpaceship.enemyVelocity *= -1;
         }
-        // If enemySpaceship collides with left wall, again reverse enemyVelocity
+        // 敵の宇宙船が左の壁に衝突すると、再び敵の速度が逆転します
         if(enemySpaceship.ex <=0){
             enemySpaceship.enemyVelocity *= -1;
         }
-        // Till enemyShotAction is false, enemy should fire shots from random travelled distance
+
+        // 敵の宇宙船がショットを発射する間隔を設定（例：800ミリ秒ごとにショットを発射）
+        long shotInterval = 700;
+
+        // ショットの最後の発射からの経過時間を計算
+        long currentTime = System.currentTimeMillis();
+        long timeSinceLastShot = currentTime - enemySpaceship.lastShotTime;
+
+        if (timeSinceLastShot >= shotInterval) {
+            // 一定間隔ごとにショットを発射する
+            Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
+            enemyShots.add(enemyShot);
+            enemySpaceship.lastShotTime = currentTime; // 最後の発射時間を更新
+        }
+
+        // emoneShotAction が false になるまで、敵はランダムな移動距離からショットを発射する必要があります
         if(enemyShotAction == false){
-            if(enemySpaceship.ex >= 200 + random.nextInt(400)){
-                Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
-                enemyShots.add(enemyShot);
-                // We're making enemyShotAction to true so that enemy can take a short at a time
+            if (enemySpaceship.ex >= 200 + random.nextInt(400)) {
+                for (int i = 0; i < 3; i++) { // 一度に3つのショットを発射する
+                    Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
+                    enemyShots.add(enemyShot);
+                }
+                // emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
             if(enemySpaceship.ex >= 400 + random.nextInt(800)){
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
                 enemyShots.add(enemyShot);
-                // We're making enemyShotAction to true so that enemy can take a short at a time
+                // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
             else{
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
                 enemyShots.add(enemyShot);
-                // We're making enemyShotAction to true so that enemy can take a short at a time
+                // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
         }
@@ -147,7 +165,9 @@ public class SpaceShooter extends View {
             if(enemyShots.size() < 1){
                 enemyShotAction = false;
             }
+
         }
+
         // Draw our spaceship shots towards the enemy. If there is a collision between our shot and enemy
         // spaceship, increment points, remove the shot from ourShots and create a new Explosion object.
         // Else if, our shot goes away through the top edge of the screen also remove
@@ -181,6 +201,8 @@ public class SpaceShooter extends View {
         if(!paused)
             handler.postDelayed(runnable, UPDATE_MILLIS);
     }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

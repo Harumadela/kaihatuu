@@ -11,6 +11,8 @@ public class EnemySpaceship {
     Bitmap enemySpaceship;
     int ex, ey;
     int enemyVelocity;
+    // 最後のショットが発射された時間を保持するフィールド
+    public long lastShotTime;
     Random random;
 
     public EnemySpaceship(Context context) {
@@ -33,4 +35,5 @@ public class EnemySpaceship {
     int getEnemySpaceshipHeight(){
         return enemySpaceship.getHeight();
     }
+
 }
