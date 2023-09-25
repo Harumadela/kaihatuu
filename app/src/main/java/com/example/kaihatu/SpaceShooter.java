@@ -19,6 +19,9 @@ import java.util.Random;
 
 
 public class SpaceShooter extends View {
+    // 敵の宇宙船がショットを発射する間隔を設定（例：800ミリ秒ごとにショットを発射）
+    long shotInterval = 700;
+    boolean Haikei = false;
     static Context context;
     Bitmap background, lifeImage;
     Handler handler;
@@ -86,7 +89,8 @@ public class SpaceShooter extends View {
         }
         // Move enemySpaceship
         enemySpaceship.ex += enemySpaceship.enemyVelocity;
-        // If enemySpaceship collides with right wall, reverse enemyVelocity
+
+        // 敵の宇宙船が右側の壁に衝突すると、敵の速度が逆転します
         if(enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() >= screenWidth){
             enemySpaceship.enemyVelocity *= -1;
         }
@@ -95,9 +99,22 @@ public class SpaceShooter extends View {
             enemySpaceship.enemyVelocity *= -1;
         }
 
-        // 敵の宇宙船がショットを発射する間隔を設定（例：800ミリ秒ごとにショットを発射）
-        long shotInterval = 700;
 
+
+        if (points > 50)
+        {
+            shotInterval = 500;
+        }
+        if (points == 80 && Haikei == false)
+        {
+            background = BitmapFactory.decodeResource(context.getResources(), R.drawable.background2);
+            shotInterval = 400;
+            Haikei = true;
+        }
+        if (points > 100)
+        {
+            shotInterval = 300;
+        }
         // ショットの最後の発射からの経過時間を計算
         long currentTime = System.currentTimeMillis();
         long timeSinceLastShot = currentTime - enemySpaceship.lastShotTime;
@@ -105,7 +122,9 @@ public class SpaceShooter extends View {
         if (timeSinceLastShot >= shotInterval) {
             // 一定間隔ごとにショットを発射する
             Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
+            Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
             enemyShots.add(enemyShot);
+            enemyShots.add(enemyShot2);
             enemySpaceship.lastShotTime = currentTime; // 最後の発射時間を更新
         }
 
@@ -114,27 +133,33 @@ public class SpaceShooter extends View {
             if (enemySpaceship.ex >= 200 + random.nextInt(400)) {
                 for (int i = 0; i < 3; i++) { // 一度に3つのショットを発射する
                     Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
+                    Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
                     enemyShots.add(enemyShot);
+                    enemyShots.add(enemyShot2);
                 }
                 // emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
             if(enemySpaceship.ex >= 400 + random.nextInt(800)){
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
+                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
                 enemyShots.add(enemyShot);
+                enemyShots.add(enemyShot2);
                 // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
             else{
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
+                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
                 enemyShots.add(enemyShot);
+                enemyShots.add(enemyShot2);
                 // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
         }
         // Draw the enemy Spaceship
         canvas.drawBitmap(enemySpaceship.getEnemySpaceship(), enemySpaceship.ex, enemySpaceship.ey, null);
-        // Draw our spaceship between the left and right edge of the screen
+        // 画面の左端と右端の間に宇宙船を描きます
         if(ourSpaceship.ox > screenWidth - ourSpaceship.getOurSpaceshipWidth()){
             ourSpaceship.ox = screenWidth - ourSpaceship.getOurSpaceshipWidth();
         }else if(ourSpaceship.ox < 0){
@@ -142,24 +167,25 @@ public class SpaceShooter extends View {
         }
         // Draw our Spaceship
         canvas.drawBitmap(ourSpaceship.getOurSpaceship(), ourSpaceship.ox, ourSpaceship.oy, null);
-        // Draw the enemy shot downwards our spaceship and if it's being hit, decrement life, remove
-        // the shot object from enemyShots ArrayList and show an explosion.
-        // Else if, it goes away through the bottom edge of the screen also remove
-        // the shot object from enemyShots.
-        // When there is no enemyShots no the screen, change enemyShotAction to false, so that enemy
-        // can shot.
+        // 撃たれた敵を宇宙船の下に描き、攻撃を受けている場合はライフを減少させ、除去します
+        // 敵ショット ArrayList からショット オブジェクトを取得し、爆発を表示します。
+        // それ以外の場合は、画面の下端からも削除されます
+        // 敵ショットからのショット オブジェクト。
+        // 画面にenemyShotsが存在しない場合は、emoneShotActionをfalseに変更し、敵が
+        // 撃てます。
         for(int i=0; i < enemyShots.size(); i++){
             enemyShots.get(i).shy += 15;
             canvas.drawBitmap(enemyShots.get(i).getShot(), enemyShots.get(i).shx, enemyShots.get(i).shy, null);
             if((enemyShots.get(i).shx >= ourSpaceship.ox)
                     && enemyShots.get(i).shx <= ourSpaceship.ox + ourSpaceship.getOurSpaceshipWidth()
                     && enemyShots.get(i).shy >= ourSpaceship.oy
-                    && enemyShots.get(i).shy <= screenHeight){
+                    && enemyShots.get(i).shy <= screenHeight-200){
                 life--;
+                System.out.println(ourSpaceship.oy +"プラス"+enemyShots.get(i).shy+"プラス"+screenHeight);
                 enemyShots.remove(i);
                 explosion = new Explosion(context, ourSpaceship.ox, ourSpaceship.oy);
                 explosions.add(explosion);
-            }else if(enemyShots.get(i).shy >= screenHeight){
+            }else if(enemyShots.get(i).shy >= screenHeight-200){
                 enemyShots.remove(i);
             }
             if(enemyShots.size() < 1){
@@ -207,11 +233,11 @@ public class SpaceShooter extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int touchX = (int)event.getX();
-        // When event.getAction() is MotionEvent.ACTION_UP, if ourShots arraylist size < 1,
-        // create a new Shot.
-        // This way we restrict ourselves of making just one shot at a time, on the screen.
+        //event.getAction() が MotionEvent.ACTION_UP の場合、ourShots 配列リスト サイズ < 1 の場合、
+        // 新しいショットを作成します。
+        // このようにして、画面上で一度に 1 つのショットのみを作成するように制限します。
         if(event.getAction() == MotionEvent.ACTION_UP){
-            if(ourShots.size() < 1){
+            if(ourShots.size() < 7){
                 Shot ourShot = new Shot(context, ourSpaceship.ox + ourSpaceship.getOurSpaceshipWidth() / 2, ourSpaceship.oy);
                 ourShots.add(ourShot);
             }

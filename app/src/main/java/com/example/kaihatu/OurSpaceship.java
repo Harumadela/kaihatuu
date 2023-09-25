@@ -17,7 +17,7 @@ public class OurSpaceship {
         ourSpaceship = BitmapFactory.decodeResource(context.getResources(), R.drawable.rocket1);
         random = new Random();
         ox = random.nextInt(SpaceShooter.screenWidth);
-        oy = SpaceShooter.screenHeight - ourSpaceship.getHeight();
+        oy = SpaceShooter.screenHeight - ourSpaceship.getHeight() - 230;
     }
 
     public Bitmap getOurSpaceship(){
@@ -25,6 +25,6 @@ public class OurSpaceship {
     }
 
     int getOurSpaceshipWidth(){
-        return ourSpaceship.getWidth();
+        return ourSpaceship.getWidth() - 50;
     }
 }
