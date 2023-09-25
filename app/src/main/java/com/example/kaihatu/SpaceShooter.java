@@ -122,7 +122,7 @@ public class SpaceShooter extends View {
         if (timeSinceLastShot >= shotInterval) {
             // 一定間隔ごとにショットを発射する
             Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
-            Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
+            Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 3, enemySpaceship.ey);
             enemyShots.add(enemyShot);
             enemyShots.add(enemyShot2);
             enemySpaceship.lastShotTime = currentTime; // 最後の発射時間を更新
@@ -142,17 +142,13 @@ public class SpaceShooter extends View {
             }
             if(enemySpaceship.ex >= 400 + random.nextInt(800)){
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
-                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
                 enemyShots.add(enemyShot);
-                enemyShots.add(enemyShot2);
                 // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
             else{
                 Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey );
-                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
                 enemyShots.add(enemyShot);
-                enemyShots.add(enemyShot2);
                 // 敵が一度にショートできるように、emoneShotAction を true にしています。
                 enemyShotAction = true;
             }
