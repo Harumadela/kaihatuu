@@ -2,7 +2,9 @@ package com.example.kaihatu.game
 
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import androidx.annotation.VisibleForTesting
+import com.example.kaihatu.R
 import com.example.kaihatu.ai.OseroAI
 import com.example.kaihatu.model.OseroGame
 import com.example.kaihatu.model.Place
@@ -12,6 +14,7 @@ import com.example.kaihatu.model.ai.AINone
 
 
 class GamePresenter {
+
 
     private val game: OseroGame = OseroGame()
     private lateinit var ai: OseroAI
@@ -23,7 +26,6 @@ class GamePresenter {
     /** 現在どちらのターンか **/
     var currentPlayer = Stone.BLACK
 
-
     fun onCreate(view: GameView, ai: OseroAI = AINone()) {
         this.view = view
         this.ai = ai
@@ -34,10 +36,14 @@ class GamePresenter {
 
     fun onClickPlace(x: Int, y: Int) {
         val view = view ?: return
+
+        // AIの操作中の場合は処理しない
         val clickPlace = Place(x, y, currentPlayer)
+
         if (!game.canPut(clickPlace)) {
             return
         }
+
         view.clearAllMarkPlaces()
         putStone(clickPlace)
         game.getCanChangePlaces(clickPlace).forEach { putStone(it) }
@@ -49,34 +55,16 @@ class GamePresenter {
             view.showWinner(if (blackCount > whiteCount) Stone.BLACK else Stone.WHITE, blackCount, whiteCount)
             view.finishGame()
         }
+
         // ターン切替
         changePlayer()
         view.markCanPutPlaces(game.getAllCanPutPlaces(currentPlayer))
 
-        // パス
-        if (game.getAllCanPutPlaces(currentPlayer).isEmpty()) {
-            if (isPassTurn) {
-                // 連続してパスが続いた場合、ゲーム終了とする
-                view.clearAllMarkPlaces()
-                //view.showPassMessage()
-                view.finishGame()
-            } else {
-                // パス
-                isPassTurn = true
-                view.clearAllMarkPlaces()
-                //view.showPassMessage()
-                changePlayer()
-            }
-        } else {
-            // パスではない場合、置けるマスを表示
-            isPassTurn = false
-            view.markCanPutPlaces(game.getAllCanPutPlaces(currentPlayer))
-        }
-
         // AI
-        if (ai !is AINone && currentPlayer == Stone.WHITE) {
+        if (currentPlayer == Stone.WHITE && ai !is AINone) {
             val choseByAI = ai.computeNext(game, currentPlayer)
             Handler(Looper.getMainLooper()).postDelayed({
+                // AIの操作が終了した後にターンを変更する
                 onClickPlace(choseByAI.x, choseByAI.y)
             }, 1000)
         }
@@ -84,14 +72,27 @@ class GamePresenter {
 
     fun onClickPass() {
         val view = view ?: return
+
+        // パスできる場所がなければ何もしない
+        val canPutPlaces = game.getAllCanPutPlaces(currentPlayer)
+        if (canPutPlaces.isNotEmpty()) {
+            return
+        }
+
         view.clearAllMarkPlaces()
         //view.showPassMessage()
         changePlayer()
 
         // AI
-        if (ai !is AINone && currentPlayer == Stone.WHITE) {
+        if (currentPlayer == Stone.WHITE && ai !is AINone) {
+            // AIの操作が始まったことをフラグで示す
+
             val choseByAI = ai.computeNext(game, currentPlayer)
-            onClickPlace(choseByAI.x, choseByAI.y)
+            Handler(Looper.getMainLooper()).postDelayed({
+                // AIの操作が終了した後にターンを変更する
+                onClickPlace(choseByAI.x, choseByAI.y)
+            }, 1000)
+
         }
     }
 
