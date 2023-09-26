@@ -62,11 +62,17 @@ class GamePresenter {
 
         // AI
         if (currentPlayer == Stone.WHITE && ai !is AINone) {
-            val choseByAI = ai.computeNext(game, currentPlayer)
-            Handler(Looper.getMainLooper()).postDelayed({
-                // AIの操作が終了した後にターンを変更する
-                onClickPlace(choseByAI.x, choseByAI.y)
-            }, 1000)
+            val aiCanPutPlaces = game.getAllCanPutPlaces(currentPlayer)
+            if (aiCanPutPlaces.isEmpty()) {
+                // AIが置ける場所がない場合、パス処理を行う
+                onClickPass()
+            } else {
+                val choseByAI = ai.computeNext(game, currentPlayer)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // AIの操作が終了した後にターンを変更する
+                    onClickPlace(choseByAI.x, choseByAI.y)
+                }, 1000)
+            }
         }
     }
 
