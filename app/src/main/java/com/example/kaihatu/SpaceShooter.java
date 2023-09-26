@@ -120,11 +120,22 @@ public class SpaceShooter extends View {
         long timeSinceLastShot = currentTime - enemySpaceship.lastShotTime;
 
         if (timeSinceLastShot >= shotInterval) {
+            Random rand = new Random();
+            int num = rand.nextInt(3);
+            System.out.println(num);
             // 一定間隔ごとにショットを発射する
             Shot enemyShot = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 2, enemySpaceship.ey);
-            Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 3, enemySpaceship.ey);
             enemyShots.add(enemyShot);
-            enemyShots.add(enemyShot2);
+            if (num == 0)
+            {
+                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 1, enemySpaceship.ey);
+                enemyShots.add(enemyShot2);
+            }
+            else if (num == 1)
+            {
+                Shot enemyShot2 = new Shot(context, enemySpaceship.ex + enemySpaceship.getEnemySpaceshipWidth() / 5, enemySpaceship.ey);
+                enemyShots.add(enemyShot2);
+            }
             enemySpaceship.lastShotTime = currentTime; // 最後の発射時間を更新
         }
 
