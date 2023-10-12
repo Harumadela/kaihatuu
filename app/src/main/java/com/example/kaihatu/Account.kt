@@ -52,6 +52,7 @@ class Account : AppCompatActivity() {
         black_rate = Math.round(black_rate * 10.0) / 10.0
         quiz_accuracy= Math.round(quiz_accuracy * 10.0) / 10.0
         high_rate = Math.round(high_rate * 10.0) / 10.0
+        osero_rate = Math.round(osero_rate * 10.0) / 10.0
 
         if(black_rate.isNaN()){
             black_rate = 0.0

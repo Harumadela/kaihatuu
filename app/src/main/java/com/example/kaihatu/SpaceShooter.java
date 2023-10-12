@@ -101,19 +101,25 @@ public class SpaceShooter extends View {
 
 
 
-        if (points > 50)
+        if (points > 30)
         {
-            shotInterval = 500;
+            shotInterval = 450;
         }
-        if (points == 80 && Haikei == false)
+        if (points == 50&& Haikei == false)
         {
+
             background = BitmapFactory.decodeResource(context.getResources(), R.drawable.background2);
-            shotInterval = 400;
             Haikei = true;
+        }
+        if (points == 80 )
+        {
+
+            shotInterval = 300;
+
         }
         if (points > 100)
         {
-            shotInterval = 300;
+            shotInterval = 100;
         }
         // ショットの最後の発射からの経過時間を計算
         long currentTime = System.currentTimeMillis();
